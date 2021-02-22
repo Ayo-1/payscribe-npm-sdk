@@ -215,37 +215,137 @@ console.error(error)
 })
 
 ```
+### Airtime To Wallet Lookup
 
-## Deployment
+You may need to get fetch the available networks and our current rate before sending the airtime
 
-Add additional notes about how to deploy this on a live system
+Please note that wallet will only be credited when the airtime is received.
 
-## Built With
+```
+Payscribe.fetch_airtime_rates()
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+```
 
-## Contributing
+### Process Airtime to Wallet
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Airtime to wallet.
 
-## Versioning
+Your wallet will be credited once airtime is received
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Parameters
 
-## Authors
+network: The network you are sending; mtn, glo, 9mobile, or airtel.
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+phone_number: Our phone phone number, kindly visit the airtime to wallet lookup to see available network and respective numbers.
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+from: The phone number you are sending it from.
 
-## License
+amount: The amount you are sending. Minimum of NGN500 And maximum of NGN20,000 per transaction.
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+```
+Payscribe.process_airtime_to_wallet(network, amount, phone, from)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
 
-## Acknowledgments
+```
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+### Validate Electricity
+
+Validate electricity
+
+Parameters
+
+meter_number: The meter number you want to validate.
+
+meter_type: postpaid or prepaid.
+
+service: This is the available disco : ikedc, ekedc, phedc, aedc, ibedc, kedco.
+
+amount: The amount you are purchasing minimum of N100.
+
+```
+Payscribe.validate_meter_number(meter_number, meter_type, service, amount)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
+
+### Pay Electricity
+
+Pay electricity bill
+
+Parameters
+
+productCode: The product code as seen when validating.
+
+productToken: The productToken as seen when validating.
+
+```
+Payscribe.pay_electricity(productCode, productToken)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
+### Vend Airtime 
+
+Purchase airtime (Glo, Mtn, Airtel, 9mobile)
+
+Parameters
+
+network: The network you are vending; mtn, glo, 9mobile or airtel.
+
+amount: Minimum of NGN50.
+
+recipient: The phone number you are buying to, set it to array if you're sending to multiple recipent.
+
+ported: Boolean Value, set to true if the number is a ported number.
+
+```
+Payscribe.vend_airtime(network, recipient,amount, false)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
+### Get Transaction Report
+
+Transaction Report
+
+Parameter
+
+trans_id: The transaction ID you are trying to query
+
+```
+Payscribe.get_transaction_report(trans_id)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
