@@ -118,6 +118,104 @@ console.error(error)
 })
 ```
 
+### Multichoice - validate smart card number
+
+Validate smart card number to get bouquet and customer details before vending
+
+Parameters
+
+type: gotv or dstv.
+
+account: the iuc number you are validating.
+
+```
+Payscribe.validate_iuc("gotv", trans_id)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
+### Vend Multichoice
+
+Make payment for GOTV - DSTV
+
+Parameters
+
+phone: The buyer' phone number.
+
+productCode: The productCode as returned when validating the iuc number.
+
+plan: the plan you are buying.
+
+productToken: The token received when validating the iuc number
+
+trans_id: your transaction id, which you can use as reference later on.
+
+```
+Payscribe.vend_multichoice(plan, producCode, phone, productToken, trans_id)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
+### Startimes - Validate smart card number
+
+Validate startimes smart card number to get bouquet and customer details before vending
+
+Parameters
+
+account: The iuc number you are validating.
+
+amount: the amount you are paying.
+
+```
+Payscribe.validate_startimes(account, amount)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
+### Vend Startimes
+
+Make payment for startimes
+
+Parameters
+
+plan: the plan you're purchasing either NOVA, CLASSIC...
+
+cycle: This is the cycle for the plan you selected either daily, weekly, or monthly.
+
+productCode: as seen on the validation.
+
+phone: the user phone number.
+
+productToken: as seen on the validation endpoint.
+
+trans_id: your reference id.
+
+```
+Payscribe.vend_startimes(cycle, plan, producCode, phone, productToken, trans_id)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
