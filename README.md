@@ -34,20 +34,46 @@ console.error(error)
 })
 ```
 
-### Break down into end to end tests
+## Data Lookup
 
-Explain what these tests test and why
+To vend for data, you need to fetch data plans.
 
-```
-Give an example
-```
+You can fetch individual plans or all at once using the data lookup method.
 
-### And coding style tests
-
-Explain what these tests test and why
+Parameters - mtn, airtel, 9mobile, glo, all(to get all at once)
 
 ```
-Give an example
+Payscribe.data_lookup("all")
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+
+```
+
+## Vend Data
+
+Purchase Data (Glo, Mtn, Airtel, 9mobile)
+
+Please note its advisable that you access the data lookup method to get the updated plan id and amount before vending for data
+
+Parameters:
+
+recipient: The phone number you are sending the data to, this can be an array if you are sending to multiple numbers
+network: The network you are sending to; mtn, glo, 9mobile, or airtel
+plan: the selected plan as gotten from the data lookup method
+
+
+```
+Payscribe.vend_data(recipient, network, plan)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
 ```
 
 ## Deployment
