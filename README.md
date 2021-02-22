@@ -34,7 +34,7 @@ console.error(error)
 })
 ```
 
-## Data Lookup
+### Data Lookup
 
 To vend for data, you need to fetch data plans.
 
@@ -53,7 +53,7 @@ console.error(error)
 
 ```
 
-## Vend Data
+### Vend Data
 
 Purchase Data (Glo, Mtn, Airtel, 9mobile)
 
@@ -61,13 +61,55 @@ Please note its advisable that you access the data lookup method to get the upda
 
 Parameters:
 
-recipient: The phone number you are sending the data to, this can be an array if you are sending to multiple numbers
-network: The network you are sending to; mtn, glo, 9mobile, or airtel
+recipient: The phone number you are sending the data to, this can be an array if you are sending to multiple numbers.
+
+network: The network you are sending to; mtn, glo, 9mobile, or airtel.
+
 plan: the selected plan as gotten from the data lookup method
 
 
 ```
 Payscribe.vend_data(recipient, network, plan)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+```
+### Rechard Card Printing
+
+Print recharge card pin, minimum quantity is 1 and maximum is 50,000.
+
+Please note that this pin works for all network.
+
+Parameters
+
+qty: the quantity of pin you want to generate.
+
+amount: Amount from NGN50, to NGN50,000.
+
+display_name: This is the name you want to show on the recharge card slip.
+
+```
+Payscribe.recharge_card(qty, amount, display_name)
+.then(data => {
+console.log(data)
+}
+.catch(error => {
+console.error(error)
+})
+```
+### Fetch Recharge Card Pin
+
+You can fetch all generated pin for a particular transaction using the transaction ID.
+
+Parameter
+
+trans_id: The trasaction ID
+
+```
+Payscribe.fetch_pin(trans_id)
 .then(data => {
 console.log(data)
 }
