@@ -221,7 +221,7 @@ class payscribe {
 
 	process_airtime_to_wallet(network, amount, phone, from) {
 		return new Promise((resolve, reject) => {
-			 fetch(`https://www.payscribe.ng/api/v1//airtime_to_wallet/vend?network=${network}&amount=${amount}&phone_number=${phone}&from=${sender}`, {
+			 fetch(`https://www.payscribe.ng/api/v1/airtime_to_wallet/vend?network=${network}&amount=${amount}&phone_number=${phone}&from=${sender}`, {
 				  method: "POST",
 				  headers: {
 				        "Content-Type": "application/json",
